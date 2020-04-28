@@ -1,0 +1,39 @@
+#main h3 {margin-top: 3em; padding: 0.33em 0.2em 0.1em;
+  border: 1px solid gray; border-width: 1px 0;}
+
+#main pre.example {color: #333; font-weight: normal;}
+
+#main pre i, dt i {font-weight: normal; color: #AAA;}
+#main p i {color: #666;}
+#main p {margin: 1em;}
+
+#main dl {margin: 1em 1em 1.5em 2em;}
+#main dt {margin-top: 1.5em; font: 1em Courier, monospace;
+   letter-spacing: -0.05em; white-space: pre;}
+#main dd {margin: 0.5em 0 0 2.5em;}
+#main dl dl {margin: 0.5em 1em 1em 0.5em;}
+#main dl dl dt {margin-top: 0.75em;}
+#main dl dl dd {margin: 0.25em 0 0 1.5em;}
+
+pre > span, 
+.optional {color: #337; font-weight: normal;}
+.recommended {color: #000; font-weight: bold;}
+.required {color: #500; font-weight: bold;}
+.generated {color: #666; font-style: italic;}
+
+dt[class] {border-left: 1em solid; padding-left: 0.66em;}
+dt.required {border-color: #500; color: #500;}
+dt.optional {border-color: #77B;}
+dt.recommended {border-color: gray;}
+dt.generated {border-color: #CCC;}
+dt.generated + dd {color: #999;}
+dt.required + dd:before {content: "Required. "; font-weight: bold; 
+color: #500;}
+dt.optional + dd:before {content: "Optional. "; font-style: italic; 
+color: #333;}
+dt.recommended + dd:before {content: "Recommended. "; 
+  color: #000; font-weight: bold;}
+dt.generated + dd:before {content: "[generated] "; 
+  color: #666;}
+
+#main hr {margin-top: 5em;}

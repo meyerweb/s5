@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+  "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>Minimal S5 Structure</title>
+<!--#include virtual="/inc/head.html" -->
+<link rel="stylesheet" type="text/css" href="s5.css" media="screen">
+<style type="text/css" media="all">
+pre {padding: 1em 0.2em; border: 1px dotted gray; border-width: 1px 0;}
+</style>
+</head>
+<body id="www-meyerweb-com" class="tools sidebar right">
+
+<!--#include virtual="/inc/page-top.html" -->
+
+<div id="mainpage">
+
+<h1>Minimal S5 Structure</h1>
+
+<p>
+This document provides the details of the S5 markup structure.  This will first present the minimum required structure, and then discuss optional bits of markup.  Note that S5 1.0 is intentionally compatible with <a href="http://my.opera.com/community/dev/operashow/documentation/doc_fileformat.html" title="Opera Show Format 1.0"><acronym title="Opera Show Format">OSF</acronym> 1.0</a>, which will be referred to at times in this document.
+</p>
+
+<h2>The Bare Minimum</h2>
+<p>
+What follows is an example of the absolute minimum markup required to be considered a valid S5 file.  The italicized text indicates technically optional but strongly recommended content.
+</p>
+
+<pre class="xhtml">
+<code>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;<i>[slide show title]</i>&lt;/title&gt;
+&lt;meta name="version" content="S5 1.0" /&gt;
+&lt;link rel="stylesheet" href="ui/slides.css" type="text/css"
+   media="projection" id="slideProj" /&gt;
+&lt;link rel="stylesheet" href="ui/opera.css" type="text/css"
+   media="projection" id="operaFix" /&gt;
+&lt;link rel="stylesheet" href="ui/print.css" type="text/css"
+   media="print" id="slidePrint" /&gt;
+&lt;script src="ui/slides.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class="layout"&gt;
+
+&lt;div id="currentSlide"&gt;&lt;/div&gt;
+&lt;div id="header"&gt;&lt;/div&gt;
+&lt;div id="footer"&gt;
+&lt;div id="controls"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="presentation"&gt;
+
+&lt;div class="slide"&gt;
+&lt;h1&gt;<i>[slide title]</i>&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code>
+</pre>
+
+
+<h3>The first lines</h3>
+<p>
+The first lines of an S5 presentation file <strong>must</strong> contain an XHTML 1.0 Strict DOCTYPE declaration and a properly namespaced <code>html</code> element.  These are both <strong>required</strong>.  Although the S5 CSS and JavaScript is compatible with any well-formed HTML or XHTML document, XHTML 1.0 Strict was chosen in order to be compatible with OSF 1.0.
+</p>
+<p>
+Because of the compatibility problems present in IE6/Win, the XML prolog should <strong>not</strong> be placed at the top of the document.
+</p>
+
+
+<h3>The <code>head</code> element</h3>
+
+<p>
+In addition to the title of the slide show, the <code>head</code> element <strong>must</strong> contain a <code>meta</code> element that describes the file format.  This is OSF 1.0 compatible.
+</p>
+<p>
+The <code>head</code> element also <strong>must</strong> contain the <code>link</code> elements and <code>script</code> element shown.  The JavaScript file is what drives the labelling of slides, the transition from slide to slide, the creation of the navigation menu, and more.  The CSS files, on the other hand, are required to set things so that the JS will work, and also to make the slides look pretty.
+</p>
+<p>
+As of S5 1.0, CSS and JavaScript should not be embedded into the document.  It is expected that a future version of S5 will change to allow embedded style sheets and scripts.
+</p>
+
+
+<h3>The <code>body</code>'s beginning</h3>
+
+<p>
+At the very beginning of the <code>body</code> is the "layout" <code>div</code>.  This is the same structure found in OSF 1.0, and can accept the same elements.  S5 adds the markup shown above, which <strong>must</strong> be included in the document.  The "controls" <code>div</code> is where the slide show navigation controls appear, and "currentSlide" is the spot where the "slide X of Y" information appears.  The "header" and "footer" <code>div</code>s <strong>must</strong> be included as well.  Authors are free to add markup and content to the "header" and "footer" <code>div</code>s, but not to remove them entirely.
+</p>
+
+
+<h3>The presentation</h3>
+
+<p>
+As in OSF 1.0, all of the slides are contained within a "presentation" <code>div</code>.  It begins immediately after the close of the "layout" <code>div</code> and contains one or more slides.
+</p>
+<p>
+Every slide in the presentation file <strong>must</strong> be enclosed in a <code>div</code> with a <code>class</code> containing the word <code>slide</code> in its value.  While a slide <code>div</code> can be given an <code>id</code>, the value will be overwritten by the S5 JavaScript routines.  Thus in S5, <code>id</code> attributes on slide <code>div</code>s are discouraged.
+</p>
+<p>
+The title of a slide should be contained by an <code>h1</code> element, as in OSF 1.0.  In S5, authors are strongly encouraged to have a slide title element, even if its content is empty.  This will help keep the navigation menu working as expected.  The markup of content for each slide is up to the individual author.  Blank slides are certainly permitted, although would seem to be sort of useless.
+</p>
+
+</div>
+
+<!--#include file="inc/extra.html" -->
+<!--#include virtual="/inc/page-end.html" -->
+</body>
+</html>

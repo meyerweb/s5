@@ -1,0 +1,39 @@
+body {
+	grid-template-columns: [left] minmax(1em,1fr) [main] minmax(10em,40em) [right] minmax(10em,1.5fr);
+}
+#main h1 {
+	font-size: 350%;
+}
+#extra {
+	grid-row: 3;
+	grid-column: right;
+	margin: 3em 0 0 15%;
+	padding: 0 1em 1.5em;
+	border: 1px solid rgba(16,0,0,0.5);
+	border-right: none;
+	border-radius: 1em 0 0 1em;
+	background: #FED5;
+	font-family: Eczar;
+	font-size: 90%;
+}
+#extra h4 {
+	margin-top: 1em;
+}
+#extra ul {
+	list-style: none;
+}
+#extra li {
+	margin-bottom: 0.25em;
+}
+#extra p {
+	margin-top: 0;
+	margin-bottom: 0.5em;
+	padding-bottom: 0;
+	text-indent: 0;
+}
+#extra strong {
+	font-weight: 600;
+}
+
+#extra .warning {color: #633; background: #FFA; padding: 1em; margin-left: 2em;}
+#extra .warning a {text-decoration: underline;}
